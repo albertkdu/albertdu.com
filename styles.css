@@ -38,6 +38,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  background-color: #f7f2eb; /* matches var(--bg) — fills iOS safe area behind Dynamic Island */
 }
 
 /* Scale base font up on larger screens so rem-based sizes grow with it */
@@ -1135,7 +1136,10 @@ h1, h2, h3, h4 {
   left: 0;
   right: 0;
   z-index: 900;
-  padding: 1rem clamp(1.25rem, 4vw, 3rem);
+  background-color: var(--bg);
+  padding-top: max(1rem, calc(1rem + env(safe-area-inset-top)));
+  padding-bottom: 1rem;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
