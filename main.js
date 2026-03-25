@@ -319,3 +319,41 @@
     });
   });
 })();
+
+/* ============================================================
+   MARQUEE — fill track to cover all screen widths seamlessly
+   ============================================================ */
+(function () {
+  function fillMarquee() {
+    var track = document.querySelector('.marquee-track');
+    if (!track) return;
+
+    var totalChildren = track.children.length;
+    // HTML ships 2 identical sets; one set = half the track width
+    var oneSetWidth = track.scrollWidth / 2;
+    if (oneSetWidth <= 0) return;
+
+    // Clone until the track covers at least 3× the viewport width
+    var target   = window.innerWidth * 3;
+    var sets     = 2;
+    var originals = Array.prototype.slice.call(track.children, 0, totalChildren / 2);
+
+    while (sets * oneSetWidth < target) {
+      originals.forEach(function (el) {
+        track.appendChild(el.cloneNode(true));
+      });
+      sets++;
+    }
+
+    // Pin animation distance to exactly one original set in px so scroll
+    // speed stays consistent regardless of how many copies were appended.
+    track.style.setProperty('--marquee-offset', '-' + oneSetWidth + 'px');
+  }
+
+  // Wait for fonts so scrollWidth reflects actual rendered text widths
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fillMarquee);
+  } else {
+    window.addEventListener('load', fillMarquee);
+  }
+})();
