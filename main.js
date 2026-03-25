@@ -215,12 +215,27 @@
   function show(index) {
     var item = items[index];
     if (!item) return;
-    var img = item.querySelector('img');
-    if (!img) return;
+    var thumbImg = item.querySelector('img');
+    if (!thumbImg) return;
     current = index;
-    imgEl.src = img.src;
-    imgEl.alt = img.alt || '';
+
+    var fullSrc = item.dataset.full || thumbImg.src;
+    imgEl.alt = thumbImg.alt || '';
     if (counter) counter.textContent = (index + 1) + ' / ' + items.length;
+
+    // Show thumbnail immediately, swap to full-res once loaded
+    imgEl.src = thumbImg.src;
+    imgEl.style.filter = 'blur(4px)';
+    imgEl.style.transition = 'filter 0.3s';
+
+    var fullImg = new Image();
+    fullImg.onload = function () {
+      if (current === index) {
+        imgEl.src = fullSrc;
+        imgEl.style.filter = '';
+      }
+    };
+    fullImg.src = fullSrc;
   }
 
   function open(index) {
