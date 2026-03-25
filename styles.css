@@ -216,7 +216,8 @@ h1, h2, h3, h4 {
   left: 0;
   right: 0;
   z-index: 900;
-  padding-block: 1.1rem;
+  padding-top: max(1.1rem, calc(1.1rem + env(safe-area-inset-top)));
+  padding-bottom: 1.1rem;
   transition: background-color 0.3s var(--ease-in-out), box-shadow 0.3s var(--ease-in-out);
 }
 
@@ -334,6 +335,9 @@ h1, h2, h3, h4 {
 }
 
 .nav-mobile a:hover { color: var(--text); background-color: var(--surface); }
+
+.nav-mobile a.nav-mobile-cv { color: var(--accent); }
+.nav-mobile a.nav-mobile-cv:hover { color: var(--accent); background-color: var(--accent-bg); }
 
 /* ============================================================
    8. HERO
@@ -1405,6 +1409,22 @@ h1, h2, h3, h4 {
     margin-inline: auto;
     margin-right: auto;
     order: -1;
+  }
+
+  /* Left/right edge fades on mobile to match the bottom fade */
+  .hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      var(--bg) 0%,
+      transparent 22%,
+      transparent 78%,
+      var(--bg) 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
   }
 
   .hero-content { text-align: center; }
