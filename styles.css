@@ -56,6 +56,19 @@ body {
   overflow-x: hidden;
 }
 
+/* Explicit safe-area fill: covers the Dynamic Island / notch zone on all pages */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+  background: var(--bg);
+  z-index: 9999;
+  pointer-events: none;
+}
+
 body.leaving {
   opacity: 0;
   transition: opacity 0.3s var(--ease-in-out);
