@@ -27,13 +27,19 @@
 <body>
 
   <!-- ============================================================
-       PAGE LOADER
+       PAGE LOADER — concentric circles drawing animation
        ============================================================ -->
   <div class="page-loader" id="page-loader" aria-hidden="true">
-    <div class="loader-content">
-      <p class="loader-name">Albert Du</p>
-      <div class="loader-line-wrap"><div class="loader-line"></div></div>
-    </div>
+    <svg class="loader-svg" viewBox="0 0 60 60" width="56" height="56">
+      <circle class="lc-inner" cx="30" cy="30" r="8"/>
+      <circle class="lc-outer" cx="30" cy="30" r="20"/>
+      <g class="lc-ticks">
+        <line x1="30" y1="6"  x2="30" y2="11"/>
+        <line x1="54" y1="30" x2="49" y2="30"/>
+        <line x1="30" y1="54" x2="30" y2="49"/>
+        <line x1="6"  y1="30" x2="11" y2="30"/>
+      </g>
+    </svg>
   </div>
 
   <!-- ============================================================
@@ -48,23 +54,16 @@
           <li><a href="#about">About</a></li>
           <li><a href="photography.html">Photography</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <a
-          href="https://1drv.ms/w/s!AnicoXcv2_IngdFpmyM7OtDjiBJ5vg?e=2EyU1y"
-          class="nav-resume"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View CV (opens in new tab)"
-        >See my CV &nearr;</a>
+        <a href="https://1drv.ms/w/s!AnicoXcv2_IngdFpmyM7OtDjiBJ5vg?e=2EyU1y"
+           class="nav-resume" target="_blank" rel="noopener noreferrer"
+           aria-label="View CV (opens in new tab)">See my CV &nearr;</a>
 
-        <button
-          class="nav-toggle"
-          aria-label="Toggle mobile menu"
-          aria-expanded="false"
-          aria-controls="nav-mobile"
-        >
+        <button class="nav-toggle" aria-label="Toggle mobile menu"
+                aria-expanded="false" aria-controls="nav-mobile">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -76,10 +75,8 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li>
-            <a href="https://1drv.ms/w/s!AnicoXcv2_IngdFpmyM7OtDjiBJ5vg?e=2EyU1y"
-               target="_blank" rel="noopener noreferrer">See my CV &nearr;</a>
-          </li>
+          <li><a href="https://1drv.ms/w/s!AnicoXcv2_IngdFpmyM7OtDjiBJ5vg?e=2EyU1y"
+                 target="_blank" rel="noopener noreferrer">See my CV &nearr;</a></li>
         </ul>
       </nav>
     </div>
@@ -91,26 +88,8 @@
          HERO
          ============================================================ -->
     <section class="hero" id="home" aria-label="Introduction">
-
-      <!-- Decorative animated background -->
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        <!-- Subtle floating geometric marks -->
-        <svg class="hero-deco hero-deco-1" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1" opacity="0.18"/>
-          <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.18"/>
-        </svg>
-        <svg class="hero-deco hero-deco-2" width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.12"/>
-        </svg>
-        <svg class="hero-deco hero-deco-3" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="1" y="1" width="18" height="18" stroke="currentColor" stroke-width="1" rx="2" opacity="0.1"/>
-        </svg>
-      </div>
-
       <div class="hero-inner container">
+
         <div class="hero-content">
           <p class="hero-eyebrow">Melbourne, Australia</p>
           <h1 class="hero-title">Hello, I&rsquo;m Albert.</h1>
@@ -118,7 +97,8 @@
           <a href="#about" class="hero-scroll" aria-label="Scroll to about section">
             <span>Scroll</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
@@ -127,13 +107,14 @@
           <img
             src="images/BWHeadshot.png"
             srcset="images/BWHeadshot-p-500.png 500w, images/BWHeadshot-p-800.png 800w, images/BWHeadshot.png 1000w"
-            sizes="(max-width: 480px) 200px, (max-width: 768px) 240px, 340px"
+            sizes="(max-width: 480px) 140px, (max-width: 768px) 200px, 300px"
             alt="Albert Du"
-            width="340"
-            height="453"
+            width="300"
+            height="400"
             fetchpriority="high"
           />
         </div>
+
       </div>
     </section>
 
@@ -164,7 +145,7 @@
         <span class="marquee-dot"></span>
         <span class="marquee-item">Cantonese</span>
         <span class="marquee-dot"></span>
-        <!-- Duplicate for seamless loop -->
+        <!-- duplicate -->
         <span class="marquee-item">Medicine</span>
         <span class="marquee-dot"></span>
         <span class="marquee-item">Photography</span>
@@ -190,6 +171,7 @@
       </div>
     </div>
 
+
     <!-- ============================================================
          ABOUT
          ============================================================ -->
@@ -205,60 +187,45 @@
           <div class="about-bio fade-up">
             <p>
               I&rsquo;m a student doctor, born and raised in Melbourne, with a love of teaching,
-              debating, cooking, and good design. Occasionally, I like to build things for the web.
-              I appreciate the small details that make something special &mdash; a well-crafted
-              sentence, a thoughtfully designed interface, the light at the end of a long day.
+              debating, cooking, and good design. I appreciate the small details that make
+              something special, like a well-crafted sentence in a good book, a uniquely
+              designed interface, or the way the light fades at the end of a long day.
             </p>
             <p>
               Outside the hospital, you&rsquo;ll find me trying new recipes, chasing golden hour,
-              or playing with my cats. I&rsquo;m drawn to new experiences that expand my perspectives,
-              whether it be hiking to remote campsites or trying aerial yoga classes.
+              or playing with my cats. I&rsquo;m drawn to new experiences that expand my
+              perspectives, whether it be hiking to remote campsites or trying aerial yoga classes.
             </p>
           </div>
 
           <aside class="about-aside" aria-label="Interests and areas">
 
+            <!-- Medicine -->
             <div class="interest-card fade-up">
-              <div class="interest-card-header">
-                <span class="interest-card-icon" aria-hidden="true">&#x2695;&#xFE0F;</span>
-                <span class="interest-card-num" aria-hidden="true">01</span>
-              </div>
               <div class="interest-card-title">Medicine</div>
               <div class="interest-card-sub">Interested in critical care and emergency medicine</div>
             </div>
 
+            <!-- Teaching -->
             <div class="interest-card fade-up">
-              <div class="interest-card-header">
-                <span class="interest-card-icon" aria-hidden="true">&#x1F4DA;</span>
-                <span class="interest-card-num" aria-hidden="true">02</span>
-              </div>
               <div class="interest-card-title">Teaching</div>
               <div class="interest-card-sub">VCE English &amp; Literature, debating</div>
             </div>
 
+            <!-- Photography -->
             <div class="interest-card fade-up">
-              <div class="interest-card-header">
-                <span class="interest-card-icon" aria-hidden="true">&#x1F4F7;</span>
-                <span class="interest-card-num" aria-hidden="true">03</span>
-              </div>
               <div class="interest-card-title">Photography</div>
               <div class="interest-card-sub">Travel and street snaps</div>
             </div>
 
+            <!-- Technology & Design -->
             <div class="interest-card fade-up">
-              <div class="interest-card-header">
-                <span class="interest-card-icon" aria-hidden="true">&#x1F4BB;</span>
-                <span class="interest-card-num" aria-hidden="true">04</span>
-              </div>
               <div class="interest-card-title">Technology &amp; Design</div>
               <div class="interest-card-sub">Thoughtful front-end interfaces</div>
             </div>
 
+            <!-- Travel -->
             <div class="interest-card interest-card-wide fade-up">
-              <div class="interest-card-header">
-                <span class="interest-card-icon" aria-hidden="true">&#x1F30F;</span>
-                <span class="interest-card-num" aria-hidden="true">05</span>
-              </div>
               <div class="interest-card-title">Travel</div>
               <div class="interest-card-sub">Melbourne is home, but always moving</div>
             </div>
@@ -268,6 +235,7 @@
 
       </div>
     </section>
+
 
     <!-- ============================================================
          PHOTOGRAPHY TEASER
@@ -292,7 +260,8 @@
             <a href="photography.html" class="text-link" aria-label="See my photography">
               See my snaps
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
           </div>
@@ -300,6 +269,7 @@
 
       </div>
     </section>
+
 
     <!-- ============================================================
          SERVICES
@@ -323,12 +293,14 @@
             <p>
               Over 1,000 hours of one-on-one tutoring experience across primary, secondary,
               and VCE levels. I specialise in VCE English and Literature, with original study
-              resources available for <button class="texts-trigger" aria-haspopup="dialog" aria-controls="texts-modal" title="Click to see full list of texts...">a wide range of texts</button>.
+              resources available for <button class="texts-trigger" aria-haspopup="dialog"
+              aria-controls="texts-modal" title="Click to see full list of texts...">a wide range of texts</button>.
             </p>
             <a href="#contact" class="service-cta" aria-label="Get in touch about tutoring">
               Learn with me
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
           </article>
@@ -347,7 +319,8 @@
             <a href="#contact" class="service-cta" aria-label="Get in touch about debate coaching">
               Get in touch
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
           </article>
@@ -359,11 +332,12 @@
           <a href="https://bloomboxfilms.com.au" target="_blank" rel="noopener noreferrer">an independent film studio</a>
           and
           <a href="https://horizonstechnology.com" target="_blank" rel="noopener noreferrer">a technology start-up</a>,
-          and I&rsquo;m always open to hearing your ideas.
+          so please reach out if you&rsquo;re in search of a new website.
         </p>
 
       </div>
     </section>
+
 
     <!-- ============================================================
          EXPERIENCE & EDUCATION (TIMELINE)
@@ -391,13 +365,6 @@
 
           <div class="timeline-item fade-up" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
-            <p class="timeline-date">2022 &ndash; 2024</p>
-            <h3 class="timeline-title">First Aid Medic</h3>
-            <p class="timeline-org">Colmed Group</p>
-          </div>
-
-          <div class="timeline-item fade-up" role="listitem">
-            <div class="timeline-dot" aria-hidden="true"></div>
             <p class="timeline-date">Ongoing</p>
             <h3 class="timeline-title">Debating Coach</h3>
             <p class="timeline-org">Melbourne Grammar School</p>
@@ -408,6 +375,13 @@
             <p class="timeline-date">Ongoing</p>
             <h3 class="timeline-title">Private Tutor</h3>
             <p class="timeline-org">Self-employed</p>
+          </div>
+
+          <div class="timeline-item fade-up" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <p class="timeline-date">2022 &ndash; 2024</p>
+            <h3 class="timeline-title">First Aid Medic</h3>
+            <p class="timeline-org">Colmed Group</p>
           </div>
 
           <div class="timeline-item fade-up" role="listitem">
@@ -426,6 +400,7 @@
       </div>
     </section>
 
+
     <!-- ============================================================
          CONTACT
          ============================================================ -->
@@ -439,7 +414,8 @@
           want to chat cameras, or just have something on your mind &mdash; I&rsquo;d love to hear from you.
         </p>
 
-        <a href="mailto:hello@albertdu.com" class="contact-email fade-up" aria-label="Send an email to hello@albertdu.com">
+        <a href="mailto:hello@albertdu.com" class="contact-email fade-up"
+           aria-label="Send an email to hello@albertdu.com">
           hello@albertdu.com
         </a>
 
@@ -474,10 +450,12 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-inner">
-        <p class="footer-copy">&copy; 2026 Albert Du. Made by me, with love.</p>
+        <p class="footer-copyright">&copy; 2026 Albert Du.</p>
+        <p class="footer-copy">Made by me, with love.</p>
         <a href="#home" class="footer-back" aria-label="Back to top">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           Back to top
         </a>

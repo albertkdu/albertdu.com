@@ -121,44 +121,6 @@
   }).join(' ');
 })();
 
-/* ============================================================
-   HERO BACKGROUND — subtle mouse parallax
-   ============================================================ */
-(function () {
-  var hero = document.querySelector('.hero');
-  var orbs = document.querySelectorAll('.hero-orb');
-  var decos = document.querySelectorAll('.hero-deco');
-  if (!hero || (!orbs.length && !decos.length)) return;
-
-  var mouseX = 0, mouseY = 0;
-  var raf = null;
-
-  hero.addEventListener('mousemove', function (e) {
-    var rect = hero.getBoundingClientRect();
-    // Normalised -0.5 to 0.5
-    mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-    mouseY = (e.clientY - rect.top)  / rect.height - 0.5;
-
-    if (!raf) {
-      raf = requestAnimationFrame(function () {
-        raf = null;
-        orbs.forEach(function (orb, i) {
-          var strength = (i + 1) * 10;
-          orb.style.transform = 'translate(' + (mouseX * strength) + 'px, ' + (mouseY * strength) + 'px)';
-        });
-        decos.forEach(function (d, i) {
-          var s = (i + 1) * 6;
-          d.style.transform = 'translate(' + (-mouseX * s) + 'px, ' + (-mouseY * s) + 'px)';
-        });
-      });
-    }
-  });
-
-  hero.addEventListener('mouseleave', function () {
-    orbs.forEach(function (orb) { orb.style.transform = ''; });
-    decos.forEach(function (d)   { d.style.transform = '';   });
-  });
-})();
 
 /* ============================================================
    SCROLL ANIMATIONS — IntersectionObserver fade-up
@@ -315,4 +277,45 @@
   lightbox.setAttribute('role', 'dialog');
   lightbox.setAttribute('aria-modal', 'true');
   lightbox.setAttribute('aria-label', 'Photo lightbox');
+})();
+
+/* ============================================================
+   INTEREST CARDS — holographic 3D tilt
+   ============================================================ */
+(function () {
+  var cards = document.querySelectorAll('.interest-card');
+  if (!cards.length) return;
+
+  cards.forEach(function (card) {
+    var raf = null;
+
+    card.addEventListener('mousemove', function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width  - 0.5;  // -0.5 to 0.5
+        var y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+        card.style.transform =
+          'perspective(700px) rotateX(' + (-y * 14) + 'deg) rotateY(' + (x * 14) + 'deg) translateZ(6px)';
+
+        card.style.setProperty('--holo-x', ((x + 0.5) * 100).toFixed(1) + '%');
+        card.style.setProperty('--holo-y', ((y + 0.5) * 100).toFixed(1) + '%');
+
+        card.style.boxShadow =
+          (x * 10) + 'px ' + (y * 10) + 'px 28px rgba(123,92,191,0.18),' +
+          '0 4px 16px rgba(123,92,191,0.10)';
+
+        card.classList.add('holo-active');
+      });
+    });
+
+    card.addEventListener('mouseleave', function () {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      card.style.transform  = '';
+      card.style.boxShadow  = '';
+      card.classList.remove('holo-active');
+    });
+  });
 })();
