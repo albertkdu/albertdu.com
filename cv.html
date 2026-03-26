@@ -20,36 +20,19 @@
        CV PAGE — SPECIFIC STYLES
        ============================================================ */
 
-    /* NAV — PDF button centred in navbar */
-    .cv-nav-pdf {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.5rem 1.25rem;
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: transparent;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: border-color var(--transition), color var(--transition), background var(--transition);
-    }
-    .cv-nav-pdf:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(111, 76, 182, 0.05);
-    }
-
     /* HEADER */
     .cv-header {
       padding-top: calc(var(--nav-height, 5rem) + env(safe-area-inset-top) + 4rem);
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
+    }
+
+    .cv-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
     .cv-title {
@@ -59,6 +42,28 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--text);
+    }
+
+    .cv-pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .cv-pdf-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(111, 76, 182, 0.05);
     }
 
     /* ============================================================
@@ -366,8 +371,8 @@
       .cv-sidebar { border-top: 1px solid var(--border); padding-top: 3rem; }
     }
 
-    @media (max-width: 600px) {
-      .cv-header-inner { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 640px) {
+      .cv-header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .cv-entry { grid-template-columns: 1fr; }
       .cv-entry-date { grid-column: 1; grid-row: auto; text-align: left; margin-bottom: 0.3rem; }
     }
@@ -416,16 +421,6 @@
     <nav class="photo-page-nav" aria-label="CV page navigation">
       <div class="nav-inner">
         <a href="index.html" class="photo-nav-logo" aria-label="Albert Du — home">Albert Du</a>
-        <a href="CV_AD.pdf" class="cv-nav-pdf" target="_blank" rel="noopener noreferrer"
-           aria-label="Open PDF version of CV">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 6 2 18 2 18 9"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8"/>
-          </svg>
-          Print / Save PDF
-        </a>
         <a href="index.html" class="photo-nav-back" aria-label="Back to home">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M10 7H2M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5"
@@ -444,7 +439,19 @@
          ============================================================ -->
     <header class="cv-header">
       <div class="container">
-        <h1 class="cv-title">Curriculum Vitae</h1>
+        <div class="cv-header-inner">
+          <h1 class="cv-title">Curriculum Vitae</h1>
+          <a href="CV_AD.pdf" class="cv-pdf-btn" target="_blank" rel="noopener noreferrer"
+             aria-label="Open PDF version of CV">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            Print / Save PDF
+          </a>
+        </div>
       </div>
     </header>
 

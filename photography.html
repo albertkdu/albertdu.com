@@ -30,6 +30,20 @@
 
 <body>
 
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="page-loader" aria-hidden="true">
+    <svg class="loader-svg" viewBox="0 0 60 60" width="56" height="56">
+      <circle class="lc-inner" cx="30" cy="30" r="8"/>
+      <circle class="lc-outer" cx="30" cy="30" r="20"/>
+      <g class="lc-ticks">
+        <line x1="30" y1="6"  x2="30" y2="11"/>
+        <line x1="54" y1="30" x2="49" y2="30"/>
+        <line x1="30" y1="54" x2="30" y2="49"/>
+        <line x1="6"  y1="30" x2="11" y2="30"/>
+      </g>
+    </svg>
+  </div>
+
   <!-- ============================================================
        MINIMAL HEADER NAV
        ============================================================ -->
@@ -54,7 +68,18 @@
          ============================================================ -->
     <section class="photo-hero container fade-up" aria-labelledby="photo-page-title">
       <h1 class="photo-hero-title" id="photo-page-title">Some of my photos</h1>
-      <p class="photo-hero-sub">Follow my <a href="https://www.instagram.com/akdu.raw/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">Instagram</a> for more</p>
+      <div class="photo-hero-sub">
+        <a href="https://www.instagram.com/akdu.raw/" class="insta-shimmer-btn"
+           target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          Follow my Instagram for more
+        </a>
+      </div>
     </section>
 
     <!-- ============================================================
