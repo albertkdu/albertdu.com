@@ -371,7 +371,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
   width: 100%;
   position: relative;
   z-index: 1;
@@ -391,13 +391,14 @@ h1, h2, h3, h4 {
 }
 
 .hero-title {
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(3.2rem, 6.5vw, 5rem);
   font-family: var(--font-display);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.025em;
   color: var(--text);
   margin-bottom: 1.5rem;
+  white-space: nowrap; /* always one line on two-column desktop layout */
 }
 
 .hero-word {
@@ -438,7 +439,7 @@ h1, h2, h3, h4 {
 .hero-image-wrap {
   position: relative;
   flex-shrink: 0;
-  max-width: clamp(280px, 36vw, 500px);
+  max-width: clamp(220px, 22vw, 360px);
   margin-right: clamp(0.5rem, 2vw, 2rem);
   opacity: 0;
   animation: fadeSlideUp 0.8s var(--ease-out) 1.1s forwards;
@@ -1407,13 +1408,15 @@ h1, h2, h3, h4 {
   }
 
   .hero-image-wrap {
-    max-width: min(320px, 78vw);
+    /* Cap height so the full hero (image + text) fits in one screen on mobile */
+    max-width: min(300px, 55vh, 78vw);
     width: 100%;
     margin-inline: auto;
     order: -1;
   }
 
   .hero-content { text-align: center; }
+  .hero-title { white-space: normal; } /* allow wrapping on single-column mobile */
   .hero-sub { margin-inline: auto; }
   .hero-scroll { margin-inline: auto; }
 
@@ -1450,7 +1453,7 @@ h1, h2, h3, h4 {
   .hero-inner { gap: 1.5rem; }
 
   .hero-image-wrap {
-    max-width: min(260px, 82vw);
+    max-width: min(240px, 50vh, 80vw);
   }
 
   .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
