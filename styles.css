@@ -1013,6 +1013,53 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
+   15b. CV SHIMMER BUTTON (Background section)
+   ============================================================ */
+.cv-shimmer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  padding: 0.75rem 2rem;
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.cv-shimmer-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.55) 50%,
+    transparent 80%
+  );
+  animation: cv-shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cv-shimmer {
+  0%   { left: -70%; }
+  50%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+.cv-shimmer-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ============================================================
    16. CONTACT SECTION
    ============================================================ */
 .contact-section {
@@ -1136,12 +1183,17 @@ h1, h2, h3, h4 {
   background-color: var(--bg);
   padding-top: max(1rem, calc(1rem + env(safe-area-inset-top)));
   padding-bottom: 1rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.photo-page-nav .nav-inner {
+  position: relative;
+  max-width: var(--container);
+  margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  max-width: 100%;
 }
 
 .photo-page-nav.scrolled {

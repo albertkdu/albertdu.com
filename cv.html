@@ -20,81 +20,45 @@
        CV PAGE — SPECIFIC STYLES
        ============================================================ */
 
+    /* NAV — PDF button centred in navbar */
+    .cv-nav-pdf {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.25rem;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .cv-nav-pdf:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(111, 76, 182, 0.05);
+    }
+
+    /* HEADER */
     .cv-header {
       padding-top: calc(var(--nav-height, 5rem) + env(safe-area-inset-top) + 4rem);
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
 
-    .cv-header-inner {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .cv-name {
+    .cv-title {
       font-family: var(--font-display);
       font-size: clamp(2.8rem, 6vw, 4.5rem);
       font-weight: 400;
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--text);
-      margin-bottom: 0.6rem;
-    }
-
-    .cv-tagline {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .cv-contact-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.5rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .cv-contact-list li {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .cv-contact-list a {
-      color: var(--text-muted);
-      transition: color var(--transition);
-    }
-    .cv-contact-list a:hover { color: var(--accent); }
-
-    .cv-print-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.4rem;
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: transparent;
-      cursor: pointer;
-      transition: border-color var(--transition), color var(--transition), background var(--transition);
-      white-space: nowrap;
-      flex-shrink: 0;
-      align-self: flex-start;
-      margin-top: 0.5rem;
-    }
-    .cv-print-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(111, 76, 182, 0.05);
     }
 
     /* ============================================================
@@ -122,9 +86,9 @@
     .cv-section:last-child { margin-bottom: 0; }
 
     .cv-section-title {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.5rem;
@@ -190,15 +154,20 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.55;
-      padding-left: 1.1em;
+      padding-left: 1.2em;
       position: relative;
     }
 
     .cv-entry-bullets li::before {
-      content: '–';
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--border);
+      left: 0.1em;
+      top: 0.58em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      opacity: 0.55;
     }
 
     /* Sub-role within an entry (e.g. House Captain, Debating Captain) */
@@ -442,40 +411,31 @@
     </svg>
   </div>
 
-  <!-- NAVIGATION -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container">
+  <!-- NAVIGATION — minimal (matches photography.html) -->
+  <header class="photo-page-header">
+    <nav class="photo-page-nav" aria-label="CV page navigation">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="Albert Du — home">Albert Du</a>
-
-        <ul class="nav-links" role="list">
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="photography.html">Photography</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#experience">Experience</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-
-        <a href="cv.html" class="nav-resume" aria-label="View CV" aria-current="page">See my CV &nearr;</a>
-
-        <button class="nav-toggle" aria-label="Toggle mobile menu"
-                aria-expanded="false" aria-controls="nav-mobile">
-          <span></span><span></span><span></span>
-        </button>
+        <a href="index.html" class="photo-nav-logo" aria-label="Albert Du — home">Albert Du</a>
+        <a href="CV_AD.pdf" class="cv-nav-pdf" target="_blank" rel="noopener noreferrer"
+           aria-label="Open PDF version of CV">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+          Print / Save PDF
+        </a>
+        <a href="index.html" class="photo-nav-back" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M10 7H2M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Home
+        </a>
       </div>
-
-      <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile navigation">
-        <ul role="list">
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="photography.html">Photography</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#experience">Experience</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="cv.html" class="nav-mobile-cv" aria-current="page">See my CV &nearr;</a></li>
-        </ul>
-      </nav>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main>
 
@@ -484,30 +444,7 @@
          ============================================================ -->
     <header class="cv-header">
       <div class="container">
-        <div class="cv-header-inner">
-          <div>
-            <h1 class="cv-name">Albert Du</h1>
-            <p class="cv-tagline">Medical Student &amp; Educator &mdash; Melbourne, Australia</p>
-            <ul class="cv-contact-list">
-              <li>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg>
-                +61 434 760 301
-              </li>
-              <li>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <a href="mailto:hello@albertdu.com">hello@albertdu.com</a>
-              </li>
-              <li>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <a href="https://www.albertdu.com" target="_blank" rel="noopener noreferrer">albertdu.com</a>
-              </li>
-            </ul>
-          </div>
-          <button class="cv-print-btn" onclick="window.print()" aria-label="Print or save as PDF">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            Print / Save PDF
-          </button>
-        </div>
+        <h1 class="cv-title">Curriculum Vitae</h1>
       </div>
     </header>
 
@@ -895,12 +832,12 @@
       <div class="footer-inner">
         <p class="footer-copyright">&copy; 2026 Albert Du.</p>
         <p class="footer-copy">Made by me, with love.</p>
-        <a href="#" class="footer-back" aria-label="Back to top">
+        <a href="index.html" class="footer-back" aria-label="Back to home">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 9l5-5 5 5" stroke="currentColor" stroke-width="1.5"
+            <path d="M10 7H2M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5"
                   stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Back to top
+          Back to home
         </a>
       </div>
     </div>
