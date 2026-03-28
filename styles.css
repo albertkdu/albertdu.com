@@ -446,9 +446,18 @@ h1, h2, h3, h4 {
   height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
-  pointer-events: none;  /* no clicking, dragging, or context menu */
+  pointer-events: none;
   user-select: none;
   display: block;
+  /* Fade all four edges so the video rectangle boundary is invisible */
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-image:
+    linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
 }
 
 /* hide any browser-injected video UI */
