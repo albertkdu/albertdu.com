@@ -95,6 +95,7 @@
         </div>
 
         <div class="hero-image-wrap">
+          <!-- Static fallback — hidden but preserves layout dimensions -->
           <img
             src="images/headshot.png"
             alt="Albert Du"
@@ -102,6 +103,16 @@
             height="420"
             fetchpriority="high"
           />
+          <!-- Animated overlay — sits exactly over the static image -->
+          <video
+            class="hero-image-anim"
+            autoplay muted loop playsinline
+            disablepictureinpicture
+            aria-hidden="true"
+          >
+            <source src="images/animatedheadshot.webm" type="video/webm">
+            <source src="images/animatedheadshot.mp4"  type="video/mp4">
+          </video>
         </div>
 
       </div>
