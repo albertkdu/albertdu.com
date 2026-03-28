@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Curriculum Vitae &mdash; Albert Du, final-year medical student, educator, and photographer based in Melbourne, Australia." />
+  <title>CV &mdash; Albert Du</title>
+
+  <link rel="icon" type="image/png" href="../images/favicons/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicons/webclip.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css?v=3" />
+
+  <style>
+    /* ============================================================
+       CV PAGE — SPECIFIC STYLES
+       ============================================================ */
+
+    /* HEADER */
+    .cv-header {
+      padding-top: calc(var(--nav-height, 5rem) + env(safe-area-inset-top) + 2rem);
+      padding-bottom: 1.75rem;
+    }
+
+    .cv-header-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cv-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .cv-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .cv-pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .cv-pdf-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(111, 76, 182, 0.05);
+    }
+
+    .cv-header-image {
+      max-width: clamp(120px, 18vw, 250px);
+      flex-shrink: 0;
+    }
+    .cv-header-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    /* ============================================================
+       CV BODY LAYOUT
+       ============================================================ */
+
+    .cv-body {
+      padding-block: 4rem;
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ============================================================
+       CV SECTION
+       ============================================================ */
+
+    .cv-section {
+      margin-bottom: 3.5rem;
+    }
+    .cv-section:last-child { margin-bottom: 0; }
+
+    .cv-section-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       EXPERIENCE / EDUCATION ENTRIES
+       ============================================================ */
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cv-entry-left { grid-column: 1; }
+    .cv-entry-date {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-subtle);
+      white-space: nowrap;
+      padding-top: 0.15em;
+      text-align: right;
+    }
+
+    .cv-entry-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+
+    .cv-entry-org {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .cv-entry-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .cv-entry-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding-left: 1.2em;
+      position: relative;
+    }
+
+    .cv-entry-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0.1em;
+      top: 0.58em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      opacity: 0.55;
+    }
+
+    /* Sub-role within an entry (e.g. House Captain, Debating Captain) */
+    .cv-sub-role {
+      margin-top: 1rem;
+    }
+
+    .cv-sub-role-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ============================================================
+       SIDEBAR — Skills, Certifications, Awards
+       ============================================================ */
+
+    .cv-sidebar .cv-section { margin-bottom: 2.5rem; }
+
+    .cv-skill-group { margin-bottom: 1.2rem; }
+    .cv-skill-group:last-child { margin-bottom: 0; }
+
+    .cv-skill-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .cv-skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .cv-skill-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.55rem;
+      line-height: 1.5;
+    }
+
+    .cv-language-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .cv-language-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .cv-language-list span {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+    }
+
+    .cv-award-item {
+      margin-bottom: 1.1rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-award-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .cv-award-org {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 0.25rem;
+    }
+    .cv-award-name {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .cv-cert-item {
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-cert-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .cv-cert-code {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin-bottom: 0.1rem;
+    }
+    .cv-cert-name {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .cv-ref-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-ref-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .cv-ref-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .cv-ref-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .cv-ref-contact {
+      font-size: 0.82rem;
+      color: var(--text-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .cv-ref-contact a {
+      color: var(--text-subtle);
+      transition: color var(--transition);
+    }
+    .cv-ref-contact a:hover { color: var(--accent); }
+
+    /* ============================================================
+       VOLUNTEER ENTRIES — compact version
+       ============================================================ */
+
+    .cv-vol-item {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-vol-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .cv-vol-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .cv-vol-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .cv-vol-year {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      white-space: nowrap;
+    }
+    .cv-vol-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+
+    @media (max-width: 900px) {
+      .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .cv-sidebar { border-top: 1px solid var(--border); padding-top: 3rem; }
+    }
+
+    @media (max-width: 640px) {
+      .cv-header { padding-top: calc(var(--nav-height, 5rem) + env(safe-area-inset-top) + 1rem); padding-bottom: 1.25rem; }
+      .cv-header-inner { grid-template-columns: 1fr; gap: 1rem; }
+      .cv-header-image { max-width: min(130px, 35vw); order: -1; }
+      .cv-entry { grid-template-columns: 1fr; }
+      .cv-entry-date { grid-column: 1; grid-row: auto; text-align: left; margin-bottom: 0.3rem; }
+    }
+
+    /* ============================================================
+       PRINT
+       ============================================================ */
+
+    @media print {
+      .nav, .footer, .cv-print-btn, .page-loader { display: none !important; }
+      .cv-header { padding-top: 2rem; }
+      .cv-body { padding-block: 2rem; }
+      .cv-grid { grid-template-columns: 1fr 220px; gap: 2.5rem; }
+      body { font-size: 11px; }
+      .cv-name { font-size: 2rem; }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4X8SCKNF0V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4X8SCKNF0V');
+  </script>
+</head>
+
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="page-loader" aria-hidden="true">
+    <svg class="loader-svg" viewBox="0 0 60 60" width="56" height="56">
+      <circle class="lc-inner" cx="30" cy="30" r="8"/>
+      <circle class="lc-outer" cx="30" cy="30" r="20"/>
+      <g class="lc-ticks">
+        <line x1="30" y1="6"  x2="30" y2="11"/>
+        <line x1="54" y1="30" x2="49" y2="30"/>
+        <line x1="30" y1="54" x2="30" y2="49"/>
+        <line x1="6"  y1="30" x2="11" y2="30"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- NAVIGATION — minimal (matches photography.html) -->
+  <header class="photo-page-header">
+    <nav class="photo-page-nav" aria-label="CV page navigation">
+      <div class="nav-inner">
+        <a href="/" class="photo-nav-logo" aria-label="Albert Du — home">Albert Du</a>
+        <a href="/" class="photo-nav-back" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M10 7H2M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Home
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         CV HEADER
+         ============================================================ -->
+    <header class="cv-header">
+      <div class="container">
+        <div class="cv-header-inner">
+          <div class="cv-title-group">
+            <h1 class="cv-title">Curriculum Vitae</h1>
+            <a href="../CV_AD.pdf" class="cv-pdf-btn" target="_blank" rel="noopener noreferrer"
+               aria-label="Open PDF version of CV">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+              </svg>
+              Print / Save PDF
+            </a>
+          </div>
+          <div class="cv-header-image">
+            <img src="../images/cvcartoon.png" alt="" aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         CV BODY
+         ============================================================ -->
+    <div class="cv-body">
+      <div class="container">
+        <div class="cv-grid">
+
+          <!-- ======================================================
+               MAIN COLUMN
+               ====================================================== -->
+          <div class="cv-main">
+
+            <!-- EXPERIENCE -->
+            <section class="cv-section" aria-labelledby="cv-exp-heading">
+              <h2 class="cv-section-title" id="cv-exp-heading">Experience</h2>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Private Tutor</h3>
+                  <p class="cv-entry-org">Self-employed</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Delivered 2,000+ hours of private tutoring to 25+ students across Years 6&ndash;12.</li>
+                    <li>Provided tailored weekly VCE English and Literature tutoring via Zoom.</li>
+                    <li>Developed bespoke teaching materials targeting reading, writing, and grammar skills.</li>
+                    <li>Delivered detailed written feedback and assessment for student essays.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jan. 2022&nbsp;&ndash;&nbsp;Present</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">UCAT Coach</h3>
+                  <p class="cv-entry-org">Self-employed</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Delivered flexible virtual coaching sessions for UCAT preparation.</li>
+                    <li>Designed detailed, personalised UCAT preparation resources.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jan. 2022&nbsp;&ndash;&nbsp;Present</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Debating Coach</h3>
+                  <p class="cv-entry-org">Melbourne Grammar School</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Coached 100+ students across Years 7&ndash;11 in DAV-style competitive debating.</li>
+                    <li>Planned and coordinated group training sessions and topic preparation workshops.</li>
+                    <li>Observed competitive debates and delivered individualised performance feedback.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Feb. 2022&nbsp;&ndash;&nbsp;Present</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Debating Adjudicator</h3>
+                  <p class="cv-entry-org">Debaters Association of Victoria</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Adjudicated competitive debates between secondary school teams across Victoria.</li>
+                    <li>Completed the DAV adjudicator accreditation programme and examination.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Feb. 2022&nbsp;&ndash;&nbsp;Present</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Website Designer</h3>
+                  <p class="cv-entry-org">Freelance</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Designed and built custom websites for private clients.</li>
+                    <li>Managed custom domain registration, email, and web hosting.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jun. 2022&nbsp;&ndash;&nbsp;Present</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Circuit Manager</h3>
+                  <p class="cv-entry-org">Monash University</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Managed multiple-mini interview circuits for entry to the Monash University Doctor of Medicine programme.</li>
+                    <li>Coordinated Circuit Assistants, interviewers, and student applicants across multiple sessions.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jul. 2023&nbsp;&ndash;&nbsp;Jan. 2025</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">First Aid Medic</h3>
+                  <p class="cv-entry-org">Colmed Group</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Provided on-site first aid coverage at a range of events across diverse environments.</li>
+                    <li>Collaborated with doctors, nurses, and paramedics to manage high-pressure situations.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Nov. 2022&nbsp;&ndash;&nbsp;Mar. 2024</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Clinical Skills Assistant</h3>
+                  <p class="cv-entry-org">Monash University</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Supported the organisation, setup, and pack-down of clinical skills teaching sessions.</li>
+                    <li>Prepared, stored, and administered materials and simulation samples in accordance with specific protocols.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Feb. 2023&nbsp;&ndash;&nbsp;Oct. 2023</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Duty Manager</h3>
+                  <p class="cv-entry-org">The Clarendon Hotel</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Delivered front-of-house customer service, managing guest enquiries via phone and message.</li>
+                    <li>Maintained a high standard of cleanliness and presentation across all guest rooms.</li>
+                    <li>Oversaw restocking of linens, amenities, and supplies.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Dec. 2022&nbsp;&ndash;&nbsp;Jan. 2023</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Assistant Teacher &amp; Academic Mentor</h3>
+                  <p class="cv-entry-org">Qs School Group</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Delivered lessons across a broad selection of VCE English texts to 30+ Year 11&ndash;12 students.</li>
+                    <li>Collaborated with 3 other teachers to develop and deliver weekly 2-hour in-person classes.</li>
+                    <li>Conducted one-on-one virtual coaching sessions for 5+ Year 9&ndash;12 students.</li>
+                    <li>Completed formal training in motivational interviewing.</li>
+                    <li>Guided students in setting and pursuing SMART goals for academic and personal improvement.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jan. 2022&nbsp;&ndash;&nbsp;Mar. 2022</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Co-Founder</h3>
+                  <p class="cv-entry-org">Shoppello (Tech Start-up)</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Designed, developed, and deployed a web platform alongside iOS and Android mobile applications.</li>
+                    <li>Led a cross-functional team comprising a graphic designer, software engineers, and marketing personnel.</li>
+                    <li>Grew social media presence across Instagram, Facebook, and Twitter to 5,000+ combined followers.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">Jan. 2017&nbsp;&ndash;&nbsp;Mar. 2024</p>
+              </div>
+
+            </section>
+
+            <!-- EDUCATION -->
+            <section class="cv-section" aria-labelledby="cv-edu-heading">
+              <h2 class="cv-section-title" id="cv-edu-heading">Education</h2>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Doctor of Medicine &amp; Bachelor of Medical Science</h3>
+                  <p class="cv-entry-org">Monash University &mdash; Clayton Campus</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Tutor Group Representative</li>
+                    <li>Clinical Dean Excellence Award &mdash; Dandenong Hospital (2024)</li>
+                    <li>Monash Emergency &amp; Critical Care Committee (MECCSIG) Member</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">2022&nbsp;&ndash;&nbsp;2026</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Victorian Certificate of Education</h3>
+                  <p class="cv-entry-org">Melbourne Grammar School</p>
+
+                  <div class="cv-sub-role">
+                    <p class="cv-sub-role-title">Debating Captain</p>
+                    <ul class="cv-entry-bullets">
+                      <li>Oversaw activities and competitions for 27 competitive debating teams and 800+ students across Years 9&ndash;12.</li>
+                      <li>Three-time State Champion in the Debaters Association of Victoria&rsquo;s debating competition.</li>
+                      <li>Pioneered joint training sessions and mock debates with Scotch College and Melbourne Girls Grammar.</li>
+                      <li>Personally coached 25+ students and 10+ teams across Years 9&ndash;12.</li>
+                    </ul>
+                  </div>
+
+                  <div class="cv-sub-role">
+                    <p class="cv-sub-role-title">House Captain &mdash; Miller House</p>
+                    <ul class="cv-entry-bullets">
+                      <li>Elected by staff and students through majority vote as Captain of Miller House.</li>
+                      <li>Provided pastoral care for 70+ students across Years 9&ndash;12.</li>
+                      <li>Established and maintained a virtual community space via Discord for 50+ students during lockdown.</li>
+                      <li>Chaired twice-weekly meetings with 70+ combined staff and students.</li>
+                      <li>Collaborated with school leaders and executives in weekly meetings, contributing to whole-school policy.</li>
+                    </ul>
+                  </div>
+
+                  <div class="cv-sub-role">
+                    <p class="cv-sub-role-title">Committee Chair &mdash; Pride Alliance</p>
+                    <ul class="cv-entry-bullets">
+                      <li>Recruited and led 30 committee members to organise events including chapel services during Pride Week.</li>
+                      <li>Advocated for LGBTQ+ staff and students and advised school leadership on policy matters.</li>
+                      <li>Hosted guest speakers including Australian actor and community activist Tim Campbell.</li>
+                    </ul>
+                  </div>
+
+                </div>
+                <p class="cv-entry-date">2016&nbsp;&ndash;&nbsp;2021</p>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-left">
+                  <h3 class="cv-entry-title">Kwong Lee Dow Young Scholar</h3>
+                  <p class="cv-entry-org">The University of Melbourne</p>
+                  <ul class="cv-entry-bullets">
+                    <li>Selective scholarship programme recognising academic excellence and leadership potential.</li>
+                  </ul>
+                </div>
+                <p class="cv-entry-date">2019&nbsp;&ndash;&nbsp;2021</p>
+              </div>
+
+            </section>
+
+            <!-- VOLUNTEERING -->
+            <section class="cv-section" aria-labelledby="cv-vol-heading">
+              <h2 class="cv-section-title" id="cv-vol-heading">Volunteering</h2>
+
+              <div class="cv-vol-item">
+                <div class="cv-vol-header">
+                  <h3 class="cv-vol-title">MUMUS Teddy Bear Hospital</h3>
+                  <span class="cv-vol-year">2022</span>
+                </div>
+                <p class="cv-vol-desc">Taught foundational health and hygiene skills to primary school children in an interactive hospital setting. Engaged with students from diverse, non-English-speaking backgrounds.</p>
+              </div>
+
+              <div class="cv-vol-item">
+                <div class="cv-vol-header">
+                  <h3 class="cv-vol-title">Smith Family Tutoring</h3>
+                  <span class="cv-vol-year">2020</span>
+                </div>
+                <p class="cv-vol-desc">Provided weekly Maths and English tutoring to 5 primary school students from disadvantaged families. Supported younger students as a trusted confidant, addressing academic stress and learning difficulties.</p>
+              </div>
+
+              <div class="cv-vol-item">
+                <div class="cv-vol-header">
+                  <h3 class="cv-vol-title">Brotherhood of St Laurence &mdash; Coolibah Centre</h3>
+                  <span class="cv-vol-year">2019</span>
+                </div>
+                <p class="cv-vol-desc">Prepared, cooked, and served 30+ meals per evening. Supported 10+ socioeconomically disadvantaged elderly community members.</p>
+              </div>
+
+            </section>
+
+          </div><!-- /cv-main -->
+
+          <!-- ======================================================
+               SIDEBAR COLUMN
+               ====================================================== -->
+          <aside class="cv-sidebar" aria-label="Skills, awards, and certifications">
+
+            <!-- SKILLS -->
+            <section class="cv-section" aria-labelledby="cv-skills-heading">
+              <h2 class="cv-section-title" id="cv-skills-heading">Skills</h2>
+
+              <div class="cv-skill-group">
+                <p class="cv-skill-label">Technological</p>
+                <div class="cv-skill-tags">
+                  <span class="cv-skill-tag">Windows &amp; macOS</span>
+                  <span class="cv-skill-tag">Microsoft Office 365</span>
+                  <span class="cv-skill-tag">Google Workspace</span>
+                  <span class="cv-skill-tag">Adobe Photoshop</span>
+                  <span class="cv-skill-tag">Adobe Lightroom</span>
+                  <span class="cv-skill-tag">Adobe XD</span>
+                  <span class="cv-skill-tag">Zoom</span>
+                  <span class="cv-skill-tag">Monash Health EMR</span>
+                </div>
+              </div>
+
+              <div class="cv-skill-group">
+                <p class="cv-skill-label">Languages</p>
+                <ul class="cv-language-list">
+                  <li>English <span>Fluent</span></li>
+                  <li>Cantonese <span>Fluent</span></li>
+                  <li>French <span>Operational</span></li>
+                  <li>Mandarin <span>Operational</span></li>
+                </ul>
+              </div>
+
+            </section>
+
+            <!-- AWARDS -->
+            <section class="cv-section" aria-labelledby="cv-awards-heading">
+              <h2 class="cv-section-title" id="cv-awards-heading">Awards</h2>
+
+              <div class="cv-award-item">
+                <p class="cv-award-org">Monash University &mdash; 2024</p>
+                <p class="cv-award-name">Clinical Dean Excellence Award (Dandenong Hospital)</p>
+              </div>
+
+              <div class="cv-award-item">
+                <p class="cv-award-org">Melbourne Grammar School &mdash; 2015&ndash;2021</p>
+                <p class="cv-award-name">William Cain Scholarship (2016), Entrance Scholarship (2017), Roderick Stewart Halliday Bursary (2018)</p>
+              </div>
+
+              <div class="cv-award-item">
+                <p class="cv-award-org">Melbourne Grammar School</p>
+                <p class="cv-award-name">Academic, House, Badminton, Debating, and Chapel Colours</p>
+              </div>
+
+              <div class="cv-award-item">
+                <p class="cv-award-org">The University of Melbourne &mdash; 2019&ndash;2021</p>
+                <p class="cv-award-name">Kwong Lee Dow Young Scholar</p>
+              </div>
+
+              <div class="cv-award-item">
+                <p class="cv-award-org">CodeMasters &mdash; 2019</p>
+                <p class="cv-award-name">State Champion &mdash; Coding &amp; Programming Competition</p>
+              </div>
+
+            </section>
+
+            <!-- CERTIFICATIONS -->
+            <section class="cv-section" aria-labelledby="cv-certs-heading">
+              <h2 class="cv-section-title" id="cv-certs-heading">Certifications</h2>
+
+              <div class="cv-cert-item">
+                <p class="cv-cert-code">Working with Children</p>
+                <p class="cv-cert-name">Card No. 2360494A</p>
+              </div>
+
+              <div class="cv-cert-item">
+                <p class="cv-cert-code">HLTAID014</p>
+                <p class="cv-cert-name">Provide Advanced First Aid</p>
+              </div>
+
+              <div class="cv-cert-item">
+                <p class="cv-cert-code">HLTAID011</p>
+                <p class="cv-cert-name">Provide First Aid</p>
+              </div>
+
+              <div class="cv-cert-item">
+                <p class="cv-cert-code">HLTAID010</p>
+                <p class="cv-cert-name">Provide Basic Emergency Life Support</p>
+              </div>
+
+              <div class="cv-cert-item">
+                <p class="cv-cert-code">HLTAID009</p>
+                <p class="cv-cert-name">Provide Cardiopulmonary Resuscitation</p>
+              </div>
+
+            </section>
+
+            <!-- REFERENCES -->
+            <section class="cv-section" aria-labelledby="cv-refs-heading">
+              <h2 class="cv-section-title" id="cv-refs-heading">References</h2>
+              <div class="cv-ref-item">
+                <p class="cv-ref-name">Vincent Chiang</p>
+                <p class="cv-ref-role">Head of Debating, Melbourne Grammar School</p>
+                <div class="cv-ref-contact">
+                  <a href="mailto:vzchiang@mgs.vic.edu.au">vzchiang@mgs.vic.edu.au</a>
+                  <a href="tel:+61430288575">+61 430 288 575</a>
+                </div>
+              </div>
+              <p style="font-size:0.8rem;color:var(--text-subtle);margin-top:0.75rem;">Further references available upon request.</p>
+            </section>
+
+          </aside>
+
+        </div><!-- /cv-grid -->
+      </div><!-- /container -->
+    </div><!-- /cv-body -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copyright">&copy; 2026 Albert Du.</p>
+        <p class="footer-copy">Made by me, with love.</p>
+        <a href="/" class="footer-back" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M10 7H2M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to home
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+
+</body>
+</html>
