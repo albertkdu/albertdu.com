@@ -1227,17 +1227,17 @@ h1, h2, h3, h4 {
 .photo-nav-back:hover { color: var(--accent); gap: 0.6rem; }
 
 .photo-hero {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(2rem, 4vw, 3.5rem);
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .photo-hero-content { /* left column */ }
 
 .photo-hero-title {
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -1246,7 +1246,7 @@ h1, h2, h3, h4 {
 }
 
 .photo-hero-image {
-  max-width: clamp(180px, 26vw, 380px);
+  max-width: clamp(130px, 18vw, 260px);
   flex-shrink: 0;
 }
 
@@ -1262,17 +1262,17 @@ h1, h2, h3, h4 {
   color: var(--text-muted);
   font-style: italic;
   font-family: var(--font-display);
-  margin-top: 1.2rem;
+  margin-top: 0.8rem;
 }
 
 .insta-shimmer-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.7rem 1.6rem;
+  gap: 0.45rem;
+  padding: 0.5rem 1.2rem;
   border: 1.5px solid var(--border);
   border-radius: 50px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 400;
   font-style: normal;
   font-family: var(--font-body);
@@ -1554,9 +1554,9 @@ h1, h2, h3, h4 {
   /* photo + cv hero: collapse to single column */
   .photo-hero {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
-  .photo-hero-image { max-width: min(220px, 55vw); margin-inline: auto; order: -1; }
+  .photo-hero-image { max-width: min(150px, 38vw); margin-inline: auto; order: -1; }
 }
 
 /* ============================================================
