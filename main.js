@@ -21,7 +21,7 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
-      setTimeout(dismissLoader, 500);
+      setTimeout(dismissLoader, 780);
     });
   } else {
     setTimeout(dismissLoader, 850);

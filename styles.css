@@ -123,7 +123,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   stroke-linecap: round;
   stroke-dasharray: 50.27;
   stroke-dashoffset: 50.27;
-  animation: lcDraw 0.25s var(--ease-out) 0.04s forwards;
+  animation: lcDraw 0.4s var(--ease-out) 0.06s forwards;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -135,7 +135,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.4;
   stroke-dasharray: 125.66;
   stroke-dashoffset: 125.66;
-  animation: lcDraw 0.35s var(--ease-out) 0.1s forwards;
+  animation: lcDraw 0.55s var(--ease-out) 0.18s forwards;
   transform-origin: center;
   transform-box: fill-box;
 }
