@@ -223,7 +223,14 @@
     imgEl.alt = thumbImg.alt || '';
     if (counter) counter.textContent = (index + 1) + ' / ' + items.length;
 
-    // Show thumbnail immediately, swap to full-res once loaded
+    // If no separate full-res, just show the thumb immediately without blur
+    if (!item.dataset.full || item.dataset.full === thumbImg.src) {
+      imgEl.src = thumbImg.src;
+      imgEl.style.filter = '';
+      return;
+    }
+
+    // Show thumbnail blurred while full-res loads
     imgEl.src = thumbImg.src;
     imgEl.style.filter = 'blur(4px)';
     imgEl.style.transition = 'filter 0.3s';
@@ -234,6 +241,9 @@
         imgEl.src = fullSrc;
         imgEl.style.filter = '';
       }
+    };
+    fullImg.onerror = function () {
+      imgEl.style.filter = '';
     };
     fullImg.src = fullSrc;
   }
